@@ -5,8 +5,9 @@ import java.util.List;
 
 public class Main {
 	public static void main(String[] args) {
-		beachIMEI();
+//		beachIMEI();
 //		System.out.println(formatMeid("A10013E710794"));
+		generateMEID();
 	}
 	
     /** 
@@ -23,13 +24,21 @@ public class Main {
     		int tac1 = i+2 + tac;
     		int fac1 = i/2 + fac;
     		int snr1 = i+4 + snr;
-//    		System.out.println("tac = " + tac);
-//    		String tac1 = tac + "";
-//    		String fac1 = fac + "";
-//    		String snr1 = snr + "";
     		String code = tac1 + "" + fac1 + "" + snr1 + "";
     		code =code+ genCode(code); 
     		System.out.println(code);
+    	}
+    }
+    
+    public static void generateMEID(){
+    	int first = 20001;
+    	int second = 617242;
+    	for(int i=0;i<100;i++){
+        int start = first + i + 2;
+        int end = second + i + 13;
+    	String code = "A" + start + "AE" + end;
+    	code = formatMeid(code);
+    	System.out.println(code);
     	}
     }
       
@@ -44,12 +53,11 @@ public class Main {
         char [] chs = code.toCharArray();  
         for (int i = 0; i < chs.length; i++) {             
             int num = chs[i] - '0';     // ascii to num  
-            //System.out.println(num);  
-            /*(1)������λ�������(��1��ʼ����)*/  
+            //System.out.println(num);       
             if (i%2==0) {  
                 sum1 = sum1 + num;  
             }else{  
-                /*(2)��ż��λ���ֱַ����2,�ֱ�����λ����ʮλ��֮��(��1��ʼ����)*/  
+               
                 temp=num * 2 ;  
                 if (temp < 10) {  
                     sum2=sum2+temp;  
