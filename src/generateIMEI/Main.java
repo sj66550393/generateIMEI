@@ -21,7 +21,7 @@ public class Main {
     	int fac = 19;
     	int snr = 573913;
     	for(int i=0;i<100;i++) {
-    		int tac1 = i+2 + tac;
+    		int tac1 = i+2 + tac + i*76;
     		int fac1 = i/2 + fac;
     		int snr1 = i+4 + snr;
     		String code = tac1 + "" + fac1 + "" + snr1 + "";
@@ -31,12 +31,14 @@ public class Main {
     }
     
     public static void generateMEID(){
-    	int first = 20001;
+    	int first = 00;
+    	int first1 = 001;
     	int second = 617242;
     	for(int i=0;i<100;i++){
-        int start = first + i + 2;
+        int start1 = first + i/3 + 2;
+        int start2 = first1 + i/2 + 2;
         int end = second + i + 13;
-    	String code = "A" + start + "AE" + end;
+    	String code = "A" + start1 + "" + start2 + "AE" + end;
     	code = formatMeid(code);
     	System.out.println(code);
     	}
